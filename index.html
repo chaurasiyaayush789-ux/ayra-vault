@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ayra Vault – Password & Notes Locker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div id="login-screen">
+      <h1>
+        <span class="logo">A</span>
+        Ayra Vault
+      </h1>
+      <p class="subtitle">
+        Local encrypted locker for your passwords & notes. Runs fully in your browser.
+      </p>
+
+      <div class="login-card">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          All data is encrypted before saving to your device.
+        </div>
+
+        <div class="input-row">
+          <label for="master-password">Master Password</label>
+          <input
+            id="master-password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Create or enter your master password"
+          />
+        </div>
+
+        <div class="flex-between">
+          <button id="unlock-btn">
+             Unlock Vault
+          </button>
+          <span class="hint">
+            First time? Just type a password & unlock – this will be your master key.
+          </span>
+        </div>
+
+        <div id="login-message" class="error hidden"></div>
+        <div id="login-success" class="success hidden"></div>
+      </div>
+    </div>
+
+    <div id="app-screen" class="hidden">
+      <div class="flex-between">
+        <div>
+          <h1>
+            <span class="logo">A</span>
+            Ayra Vault
+          </h1>
+          <p class="subtitle">
+            Encrypted passwords & notes – stored only in this browser.
+          </p>
+        </div>
+        <div class="flex" style="justify-content: flex-end;">
+          <div id="entry-count-pill" class="pill">
+             <span id="entry-count">0</span> items secured
+          </div>
+          <button id="lock-btn" class="secondary">
+             Lock & Clear
+          </button>
+        </div>
+      </div>
+
+      <div class="vault-header">
+        <div class="grid-2">
+          <div>
+            <div class="input-row">
+              <label for="item-type">Type</label>
+              <select id="item-type">
+                <option value="password">Password</option>
+                <option value="note">Note</option>
+              </select>
+            </div>
+            <div class="input-row">
+              <label for="item-title">Title</label>
+              <input id="item-title" type="text" placeholder="e.g. Gmail, YouTube idea, Server notes" />
+            </div>
+            <div class="input-row" id="username-row">
+              <label for="item-username">Username / Email (optional)</label>
+              <input id="item-username" type="text" placeholder="e.g. ayra@example.com" />
+            </div>
+          </div>
+
+          <div>
+            <div class="input-row">
+              <label id="value-label" for="item-value">Password / Note</label>
+              <textarea
+                id="item-value"
+                placeholder="Enter password, secret token, or detailed note..."
+              ></textarea>
+            </div>
+            <div class="flex-between">
+              <span class="hint">
+                Pro tip: Use this vault for API keys, ideas, credentials, etc.
+              </span>
+              <button id="add-btn">
+                ➕ Add Item
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="flex-between">
+          <div>
+            <strong style="font-size: 0.95rem;">Your Vault</strong>
+            <p class="muted">
+              Only available while this tab is unlocked. Nothing is uploaded to any server.
+            </p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div id="entry-list" class="entry-list"></div>
+        <p id="no-items-text" class="no-items">
+          No items yet. Add your first password or note above.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
